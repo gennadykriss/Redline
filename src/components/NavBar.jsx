@@ -36,7 +36,7 @@ export default function NavBar() {
         {/* Logo and Title */}
         <NavLink to="/" className="flex items-center space-x-3">
           <img
-            src="/src/assets/Redline.png"
+            src="../public/Redline.png"
             alt="Redline"
             className="h-10 w-auto"
           />
