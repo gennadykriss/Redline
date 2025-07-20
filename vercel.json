@@ -1,10 +1,14 @@
 {
   "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "functions": {
+    "api/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "https://www.balldontlie.io/api/v1/:path*"
-    },
     {
       "source": "/(.*)",
       "destination": "/"

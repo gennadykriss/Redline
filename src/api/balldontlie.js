@@ -1,10 +1,11 @@
 // src/api/balldontlie.js
 import axios from 'axios';
 
-
 // Create axios instance pointing to our backend proxy
+// In production, use the current domain's /api routes (Vercel serverless functions)
+// In development, use the local backend server
 const api = axios.create({
-  baseURL: 'http://localhost:4000/api'
+  baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:4000/api'
 });
 
 
