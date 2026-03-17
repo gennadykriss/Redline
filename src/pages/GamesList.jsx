@@ -1,6 +1,5 @@
 // src/pages/GamesList.jsx
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useGames } from '../hooks/useGames';
 import classNames from 'classnames';
 import { teamLogos } from '../data/teamLogos';
@@ -142,9 +141,7 @@ export default function GamesList() {
       {/* Games grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {games.map(game => (
-          <Link key={game.id} to={`/games/${game.id}`}>
-            <GameCard game={game} language={language} />
-          </Link>
+          <GameCard key={game.id} game={game} language={language} />
         ))}
       </div>
 

@@ -66,9 +66,11 @@ export default async function handler(req, res) {
       res.json(transformedResult);
     } else {
       // No date filter - get season games with pagination
-      const params = { 
-        per_page: 100, // Fetch larger chunks to simulate pagination
-        seasons: [2023] // Default to 2023 season for demonstration
+      const now = new Date();
+      const currentSeason = now.getMonth() >= 9 ? now.getFullYear() : now.getFullYear() - 1;
+      const params = {
+        per_page: 100,
+        seasons: [currentSeason]
       };
 
       const result = await balldontlie.nba.getGames(params);

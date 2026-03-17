@@ -74,16 +74,18 @@ export default function TeamDetail() {
     return acc;
   }, {});
 
-  const averageHeight = teamPlayers
-    .filter(p => p.height)
-    .reduce((sum, p, _, arr) => {
-      const height = parseFloat(p.height.split('-')[0]) + parseFloat(p.height.split('-')[1]) / 12;
-      return sum + height / arr.length;
-    }, 0);
+  const heightPlayers = teamPlayers.filter(p => p.height);
+  const averageHeight = heightPlayers.length
+    ? heightPlayers.reduce((sum, p) => {
+        const [ft, inch] = p.height.split('-').map(Number);
+        return sum + ft + inch / 12;
+      }, 0) / heightPlayers.length
+    : 0;
 
-  const averageWeight = teamPlayers
-    .filter(p => p.weight)
-    .reduce((sum, p, _, arr) => sum + p.weight / arr.length, 0);
+  const weightPlayers = teamPlayers.filter(p => p.weight);
+  const averageWeight = weightPlayers.length
+    ? weightPlayers.reduce((sum, p) => sum + p.weight, 0) / weightPlayers.length
+    : 0;
 
   return (
     <div className="space-y-6">
