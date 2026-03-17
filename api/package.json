@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "dependencies": {
     "@balldontlie/sdk": "^1.2.2"
   }

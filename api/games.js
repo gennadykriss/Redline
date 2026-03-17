@@ -1,5 +1,5 @@
 // api/games.js
-const { BalldontlieAPI } = require('@balldontlie/sdk');
+import { BalldontlieAPI } from '@balldontlie/sdk';
 
 // Initialize the SDK
 const balldontlie = new BalldontlieAPI({
