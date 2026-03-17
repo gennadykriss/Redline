@@ -2,7 +2,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { fetchTeams, fetchPlayers } from '../api/balldontlie';
+import { fetchTeams, fetchPlayersByTeam } from '../api/balldontlie';
 import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../utils/translations';
 import { teamLogos } from '../data/teamLogos';
@@ -46,7 +46,7 @@ export default function TeamDetail() {
   // Fetch players for this team
   const { data: playersData, isLoading: isLoadingPlayers } = useQuery({
     queryKey: ['team-players', id],
-    queryFn: () => fetchPlayers(1, 100), // Get enough players to find team members
+    queryFn: () => fetchPlayersByTeam(id),
     staleTime: 1000 * 60 * 5, // 5 minutes
     enabled: !!id,
   });
@@ -64,8 +64,7 @@ export default function TeamDetail() {
     );
   }
 
-  // Filter players for this team
-  const teamPlayers = playersData?.data?.filter(player => player.team.id === parseInt(id)) || [];
+  const teamPlayers = playersData?.data || [];
 
   // Team statistics
   const totalPlayers = teamPlayers.length;

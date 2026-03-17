@@ -28,6 +28,13 @@ export async function fetchPlayerStats(playerId) {
 }
 
 
+export async function fetchPlayersByTeam(teamId) {
+  const response = await api.get('/players', {
+    params: { team_ids: teamId, per_page: 100 }
+  });
+  return response.data;
+}
+
 export async function fetchTeams() {
   const response = await api.get('/teams');
   return response.data;
