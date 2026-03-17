@@ -84,7 +84,7 @@ export default function TeamDetail() {
 
   const weightPlayers = teamPlayers.filter(p => p.weight);
   const averageWeight = weightPlayers.length
-    ? weightPlayers.reduce((sum, p) => sum + p.weight, 0) / weightPlayers.length
+    ? weightPlayers.reduce((sum, p) => sum + Number(p.weight), 0) / weightPlayers.length
     : 0;
 
   return (
